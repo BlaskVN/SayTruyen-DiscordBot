@@ -8,7 +8,18 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 })
+const token = process.env['token']
+const dotenv = require("dotenv").config()
 
+const express = require('express')
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+  res.send('Bot Started!')
+})
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
 
 client.on('ready', () => {
     console.log('Bot da san sang')
@@ -16,8 +27,8 @@ client.on('ready', () => {
 
 client.on("messageCreate", message => {
     if (message.content === 'ping') {
-        message.reply('Bạn ping là có ý gì?')
+        message.reply('Ping củ l')
     }
 })
 
-client.login(process.env.TOKEN)
+client.login(token)
